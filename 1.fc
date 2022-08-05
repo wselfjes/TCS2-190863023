@@ -1,0 +1,43 @@
+{-
+
+  TASK 1 - Greatest common divisor
+  Write the method that calculates greater common divisor for two integers greater
+  or equal to 1 and less than 1048576.
+-}
+
+() recv_internal() {
+}
+
+int trailing_zeros(slice a) asm "SDCNTTRAIL0";
+
+;; testable
+(int) gcd(int a, int b) method_id {
+
+  if(a == 0) {
+    return b;
+  }
+  if(b == 0) {
+    return a;
+  }
+  var a_cell = begin_cell().store_uint(a, 256).end_cell();
+  var i = trailing_zeros(a_cell.begin_parse());
+  var b_cell = begin_cell().store_uint(b, 256).end_cell();
+  var j = trailing_zeros(b_cell.begin_parse());
+  var k = min(i, j);
+  a >>= i;
+  b >>= j;
+
+  do {
+    if a > b {
+      [a, b] = [b, a];
+    }
+    b -= a;
+
+    b_cell = begin_cell().store_uint(b, 256).end_cell();
+    b >>= trailing_zeros(b_cell.begin_parse());
+
+  } until (b == 0);
+
+  return a << k;
+}
+

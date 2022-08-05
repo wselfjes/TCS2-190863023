@@ -3,4 +3,11 @@ first_task:
   func:
   - func/1.fc
   tests:
-  - tests/example.fc
+  - tests/first_tests.fc
+
+second_task:
+  data: fift/data.fif
+  func:
+  - func/2.fc
+  tests:
+  - tests/second_tests.fc

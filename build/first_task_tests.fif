@@ -1,5 +1,5 @@
 "Asm.fif" include
-// automatically generated from `/Users/wself/Library/Application Support/toncli/func-libs/stdlib-tests.func` `/Users/wself/Library/Application Support/toncli/func-libs/tests-helpers.func` `/Users/wself/workspace/TCS2-190863023/tests/example.fc` 
+// automatically generated from `/Users/wself/Library/Application Support/toncli/func-libs/stdlib-tests.func` `/Users/wself/Library/Application Support/toncli/func-libs/tests-helpers.func` `/Users/wself/workspace/TCS2-190863023/tests/first_tests.fc` 
 PROGRAM{
   85860 DECLMETHOD get_c7
   0 DECLMETHOD test_gcd_data

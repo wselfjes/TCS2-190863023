@@ -1,0 +1,63 @@
+"Asm.fif" include
+// automatically generated from `/Users/wself/Library/Application Support/toncli/func-libs/stdlib-tests.func` `/Users/wself/Library/Application Support/toncli/func-libs/tests-helpers.func` `/Users/wself/workspace/TCS2-190863023/tests/second_tests.fc` 
+PROGRAM{
+  85860 DECLMETHOD get_c7
+  0 DECLMETHOD test_merge_data
+  1 DECLMETHOD test_merge_dict
+  get_c7 PROC:<{
+    // 
+    124711402 PUSHINT	//  _2=124711402
+    0 PUSHINT	//  _2=124711402 _3=0
+    DUP	//  _2=124711402 _3=0 _4=0
+    NOW	//  _2=124711402 _3=0 _4=0 _5
+    1 PUSHINT	//  _2=124711402 _3=0 _4=0 _5 _6=1
+    DUP	//  _2=124711402 _3=0 _4=0 _5 _6=1 _7=1
+    239 PUSHINT	//  _2=124711402 _3=0 _4=0 _5 _6=1 _7=1 _8=239
+    1000000000 PUSHINT	//  _2=124711402 _3=0 _4=0 _5 _6=1 _7=1 _8=239 _10=1000000000
+    PUSHNULL	//  _2=124711402 _3=0 _4=0 _5 _6=1 _7=1 _8=239 _10=1000000000 _11
+    PAIR	//  _2=124711402 _3=0 _4=0 _5 _6=1 _7=1 _8=239 _12
+    MYADDR	//  _2=124711402 _3=0 _4=0 _5 _6=1 _7=1 _8=239 _12 _13
+    CONFIGROOT	//  _2=124711402 _3=0 _4=0 _5 _6=1 _7=1 _8=239 _12 _13 _14
+    10 TUPLE	//  _15
+    SINGLE	//  _16
+  }>
+  test_merge_data PROC:<{
+    // 
+    79555 PUSHINT	//  function_selector=79555
+    32 PUSHINT	//  function_selector=79555 _6=32
+    DUP	//  function_selector=79555 _6=32 _7=32
+    NEWC	//  function_selector=79555 _6=32 _7=32 _8
+    1 STU	//  function_selector=79555 _6=32 _10
+    2 STU	//  function_selector=79555 _12
+    ENDC	//  function_selector=79555 data_cell
+    CTOS	//  function_selector=79555 data
+    NEWDICT	//  function_selector=79555 data dict1
+    SWAP	//  function_selector=79555 dict1 data
+    32 LDSLICE	//  function_selector=79555 dict1 _19 data
+    1 PUSHINT	//  function_selector=79555 dict1 _19 data _22=1
+    s0 s3 XCHG2
+    8 PUSHPOW2	//  function_selector=79555 data _19 _22=1 dict1 _23=256
+    DICTUSET	//  function_selector=79555 data dict1
+    NEWDICT	//  function_selector=79555 data dict1 dict2
+    s0 s2 XCHG	//  function_selector=79555 dict2 dict1 data
+    32 LDSLICE	//  function_selector=79555 dict2 dict1 _46 _45
+    DROP	//  function_selector=79555 dict2 dict1 _28
+    3 PUSHINT
+    ROT
+    s0 s3 XCHG
+    8 PUSHPOW2	//  function_selector=79555 dict1 _28 _31=3 dict2 _32=256
+    DICTUSET	//  function_selector=79555 dict1 dict2
+    PAIR	//  function_selector=79555 stack
+    NEWC	//  function_selector=79555 stack _38
+    ENDC	//  function_selector=79555 stack data
+    get_c7 INLINECALLDICT	//  function_selector=79555 stack data _41
+    PUSHNULL	//  function_selector=79555 stack data _41 _42
+    5 TUPLE	//  _40
+  }>
+  test_merge_dict PROC:<{
+    //  exit_code data stack actions gas
+    4 BLKDROP	//  exit_code
+    0 NEQINT	//  _7
+    100 THROWIF
+  }>
+}END>c

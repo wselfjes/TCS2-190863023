@@ -1,0 +1,49 @@
+;; Each test function must specify method_id
+;; Test functions method_id need to started from 0
+
+;; Each test functions must to be in pairs
+;; First funtion expect nothing in arguments
+;; But need to return:
+;;        function selector - which function to test, e.g. 0 for recv_internal, -1 recv_external, 85143 for seqno, and so on
+;;        tuple - stack values needed to be passed to function in tuple
+;;        c4 cell - start data of smart contract
+;;        c7 tuple / null
+;;        gas limit integer / null
+
+[int, tuple, cell, tuple, int] test_merge_data() method_id(0) {
+   
+    int function_selector = 79555;
+
+    cell message = begin_cell().end_cell();
+    cell data_cell = begin_cell()
+                    .store_uint(32, 1)
+                    .store_uint(32, 2)
+                    .end_cell();
+    slice data = data_cell.begin_parse();
+
+    var dict1 = new_dict();
+    dict1~udict_set(256, 1, data~load_bits(32));
+    var dict2 = new_dict();
+    dict2~udict_set(256, 3, data~load_bits(32));
+    tuple stack = unsafe_tuple([dict1, dict2]); 
+
+    cell data = begin_cell().end_cell();
+
+    return [function_selector, stack, data, get_c7(), null()];
+}
+
+
+;; After test data function
+;; We need to define test funtion
+;; It will accept:
+;;        exit code - exit code of runvm, here you can check errors / not
+;;        c4 cell - data of smart contract after runvm invokes
+;;        tuple - stack values of smart contract
+;;        c5 cell - here you can check all outcoming messages
+;;        gas - gas that was used
+;; By default test is passed
+;; You can use throw_if to fail test
+
+_ test_merge_dict(int exit_code, cell data, tuple stack, cell actions, int gas) method_id(1) {
+    throw_if(100, exit_code != 0); 
+}

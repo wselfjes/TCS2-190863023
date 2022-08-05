@@ -1,0 +1,45 @@
+"Asm.fif" include
+// automatically generated from `/Users/wself/Library/Application Support/toncli/func-libs/stdlib-tests.func` `/Users/wself/workspace/TCS2-190863023/func/2.fc` 
+PROGRAM{
+  DECLPROC recv_internal
+  79555 DECLMETHOD merge_hashmaps
+  recv_internal PROC:<{
+    // 
+  }>
+  merge_hashmaps PROC:<{
+    //  dict1 dict2
+    NEWDICT	//  dict1 dict2 discard_dict
+    -1 PUSHINT	//  dict1 dict2 discard_dict key=-1
+    UNTIL:<{
+      s2 PUSH
+      8 PUSHPOW2	//  dict1 dict2 discard_dict key dict2 _8=256
+      DICTUGETNEXT
+      NULLSWAPIFNOT2	//  dict1 dict2 discard_dict cs key f
+      DUP	//  dict1 dict2 discard_dict cs key f f
+      IF:<{	//  dict1 dict2 discard_dict cs key f
+        s1 s5 PUSH2
+        8 PUSHPOW2	//  dict1 dict2 discard_dict cs key f key dict1 _12=256
+        DICTUGET
+        NULLSWAPIFNOT	//  dict1 dict2 discard_dict cs key f _24 _25
+        NIP	//  dict1 dict2 discard_dict cs key f success
+        IF:<{	//  dict1 dict2 discard_dict cs key f
+          s2 s2 s3 XCPUXC
+          8 PUSHPOW2	//  dict1 dict2 f key cs key discard_dict _15=256
+          DICTUSET	//  dict1 dict2 f key discard_dict
+        }>ELSE<{	//  dict1 dict2 discard_dict cs key f
+          s2 s2 s5 XCPUXC
+          8 PUSHPOW2	//  f dict2 discard_dict key cs key dict1 _18=256
+          DICTUSET	//  f dict2 discard_dict key dict1
+          s4 s1 s4 XCHG3	//  dict1 dict2 f key discard_dict
+        }>
+        -ROT	//  dict1 dict2 discard_dict f key
+      }>ELSE<{
+        s2 POP	//  dict1 dict2 discard_dict f key
+      }>
+      SWAP	//  dict1 dict2 discard_dict key f
+      NOT	//  dict1 dict2 discard_dict key _20
+    }>	//  dict1 dict2 discard_dict key
+    DROP
+    NIP	//  dict1 discard_dict
+  }>
+}END>c
