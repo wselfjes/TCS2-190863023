@@ -1,0 +1,60 @@
+"Asm.fif" include
+// automatically generated from `/Users/wself/Library/Application Support/toncli/func-libs/stdlib-tests.func` `/Users/wself/workspace/TCS2-190863023/func/1.fc` 
+PROGRAM{
+  DECLPROC recv_internal
+  93344 DECLMETHOD gcd
+  recv_internal PROC:<{
+    // 
+  }>
+  gcd PROC:<{
+    //  a b
+    OVER	//  a b a
+    0 EQINT	//  a b _3
+    IFJMP:<{	//  a b
+      NIP	//  b
+    }>	//  a b
+    DUP	//  a b b
+    0 EQINT	//  a b _5
+    IFJMP:<{	//  a b
+      DROP	//  a
+    }>	//  a b
+    OVER
+    NEWC	//  a b a _7
+    256 STU	//  a b _9
+    ENDC	//  a b a_cell
+    CTOS	//  a b _12
+    SDCNTTRAIL0	//  a b i
+    OVER
+    NEWC	//  a b i b _15
+    256 STU	//  a b i _17
+    ENDC	//  a b i b_cell
+    CTOS	//  a b i _20
+    SDCNTTRAIL0	//  a b i j
+    2DUP	//  a b i j i j
+    MIN	//  a b i j k
+    s4 s2 XCHG2	//  j b k a i
+    RSHIFT	//  j b k a
+    s2 s3 XCHG2	//  a k b j
+    RSHIFT	//  a k b
+    UNTIL:<{
+      s2 s0 PUSH2	//  a k b a b
+      GREATER	//  a k b _26
+      IF:<{	//  b k a
+        s0 s2 XCHG	//  a k b
+      }>	//  a k b
+      s2 PUSH	//  a k b a
+      SUB	//  a k b
+      DUP
+      NEWC	//  a k b b _28
+      256 STU	//  a k b _30
+      ENDC	//  a k b b_cell
+      CTOS	//  a k b _32
+      SDCNTTRAIL0	//  a k b _33
+      RSHIFT	//  a k b
+      DUP	//  a k b b
+      0 EQINT	//  a k b _36
+    }>	//  a k b
+    DROP	//  a k
+    LSHIFT	//  _37
+  }>
+}END>c
